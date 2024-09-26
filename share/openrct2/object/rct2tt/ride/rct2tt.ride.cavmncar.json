@@ -1,0 +1,270 @@
+{
+    "id": "rct2tt.ride.cavmncar",
+    "authors": [
+        "Frontier Studios"
+    ],
+    "version": "1.0",
+    "originalId": "0E24F720|CAVMNCAR|52588A77",
+    "sourceGame": "rct2tt",
+    "objectType": "ride",
+    "properties": {
+        "type": "go_karts",
+        "category": "thrill",
+        "carColours": [
+            [
+                [
+                    "light_blue",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "bright_red",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "yellow",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "bright_green",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "black",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "light_purple",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "light_orange",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "aquamarine",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "dark_brown",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "white",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "bright_pink",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "dark_olive_green",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "bordeaux_red",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "dark_purple",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "bright_purple",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "light_pink",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "dark_blue",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "icy_blue",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "teal",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "saturated_green",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "dark_green",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "moss_green",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "olive_green",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "bright_yellow",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "dark_yellow",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "dark_orange",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "saturated_brown",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "salmon_pink",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "saturated_red",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "dark_pink",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "light_blue",
+                    "black",
+                    "yellow"
+                ],
+                [
+                    "bright_red",
+                    "black",
+                    "yellow"
+                ]
+            ]
+        ],
+        "cars": {
+            "rotationFrameMask": 31,
+            "spacing": 152888,
+            "mass": 250,
+            "numSeats": 1,
+            "numSeatRows": 1,
+            "frictionSoundId": 21,
+            "doubleSoundFrequency": 1,
+            "poweredAcceleration": 35,
+            "poweredMaxSpeed": 40,
+            "drawOrder": 7,
+            "frames": {
+                "flat": true,
+                "gentleSlopes": true
+            },
+            "hasAdditionalColour1": true,
+            "isPowered": true,
+            "useBoatHireCollisionDetection": true,
+            "isGoKart": true,
+            "loadingPositions": [
+                -1
+            ]
+        }
+    },
+    "images": [
+        "$RCT2:OBJDATA/CAVMNCAR.DAT[0..210]"
+    ],
+    "strings": {
+        "name": {
+            "en-GB": "Caveman Cars",
+            "fr-FR": "Voiture des hommes des cavernes",
+            "de-DE": "Höhlenmenschenwagen",
+            "es-ES": "Coches cavernícolas",
+            "it-IT": "Carrozze dei cavernicoli",
+            "nl-NL": "Holbewoners-go-karts",
+            "sv-SE": "Grottbilar",
+            "ko-KR": "석기시대 차",
+            "zh-TW": "原始人列車",
+            "ja-JP": "穴居人のレースカー",
+            "pt-BR": "Carros de Homens das Cavernas",
+            "cs-CZ": "Prehistorické motokáry",
+            "pl-PL": "Jaskiniowe samochodziki",
+            "ru-RU": "Пещ. машины",
+            "eo-ZZ": "Kavernhomo-Aŭtoj",
+            "ca-ES": "Cotxes cavernícoles",
+            "fi-FI": "Luolamiesautot",
+            "zh-CN": "洞穴人小车",
+            "hu-HU": "Ősember kocsik"
+        },
+        "description": {
+            "en-GB": "Self-drive go-karts in Stone Age style",
+            "en-US": "Self-driven go-karts in Stone Age style",
+            "fr-FR": "Kart préhistorique",
+            "de-DE": "Selbstbetriebene Go-Karts im Steinzeitstil",
+            "es-ES": "Los usuarios compiten en los karts de la edad de piedra",
+            "it-IT": "I passeggeri si sfidano su go-kart dell’Età della Pietra",
+            "nl-NL": "Passagiers racen in go-karts met een steentijdthema.",
+            "sv-SE": "Gokart i stenåldersstil",
+            "ko-KR": "석기시대의 고 카트에 타고 레이스를 펼치는 놀이기구",
+            "zh-TW": "乘客以石器時代高卡賽車彼此競速",
+            "ja-JP": "石器時代をモチーフにしたゴーカート",
+            "pt-BR": "Karts pilotáveis em temática da Idade da Pedra",
+            "cs-CZ": "Benzínové ovladatelné motokáry ve stylu pravěku",
+            "pl-PL": "Pasażerowie ścigają się gokartami w stylu epoki kamiennej",
+            "ru-RU": "Люди гоняются на стильных машинках",
+            "eo-ZZ": "Gokartoj kun Ŝtonepoka stilo",
+            "ca-ES": "Karts que condueixen els usuaris de l’edat de pedra.",
+            "fi-FI": "Itse ajettavat kivikauden tyyliset mikroautot",
+            "zh-CN": "石器时代风格的自驾卡丁车",
+            "hu-HU": "Önvezető gokartok, kőkorszaki stílusban"
+        },
+        "capacity": {
+            "en-GB": "Single-seater",
+            "fr-FR": "Monoplace",
+            "de-DE": "Einsitzer",
+            "es-ES": "Monoplaza",
+            "it-IT": "Un solo passeggero",
+            "nl-NL": "1 persoon per kart",
+            "sv-SE": "Ensitsig",
+            "ko-KR": "1인승",
+            "zh-TW": "單一乘客",
+            "ja-JP": "各車両1名",
+            "pt-BR": "Assento único",
+            "cs-CZ": "1 místo v každém voze",
+            "pl-PL": "Jednomiejscowe",
+            "ru-RU": "Одиночные",
+            "eo-ZZ": "Po 1 pasaĝero por aŭto",
+            "ca-ES": "Monoplaça",
+            "fi-FI": "Yksipaikkainen",
+            "zh-CN": "单人座",
+            "hu-HU": "Együléses"
+        }
+    }
+}

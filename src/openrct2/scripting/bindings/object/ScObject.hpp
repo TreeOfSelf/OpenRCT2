@@ -16,6 +16,7 @@
 #    include "../../../object/RideObject.h"
 #    include "../../../object/SceneryGroupObject.h"
 #    include "../../../object/SmallSceneryObject.h"
+#    include "../../../object/LargeSceneryObject.h"
 #    include "../../Duktape.hpp"
 #    include "../../ScriptEngine.h"
 #    include "ScInstalledObject.hpp"
@@ -900,6 +901,53 @@ namespace OpenRCT2::Scripting
         }
     };
 
+    class ScLargeSceneryTile
+    {
+    public:
+        ScLargeSceneryTile( const LargeSceneryTile& tile)
+            : _tile(tile)
+        {
+        }
+
+        static void Register(duk_context* ctx)
+        {
+            dukglue_register_property(ctx, &ScLargeSceneryTile::get_x_offset, nullptr, "x_offset");
+            dukglue_register_property(ctx, &ScLargeSceneryTile::get_y_offset, nullptr, "y_offset");
+            dukglue_register_property(ctx, &ScLargeSceneryTile::get_z_offset, nullptr, "z_offset");
+            dukglue_register_property(ctx, &ScLargeSceneryTile::get_z_clearance, nullptr, "z_clearance");
+            dukglue_register_property(ctx, &ScLargeSceneryTile::get_flags, nullptr, "flags");
+        }
+
+        private:
+        LargeSceneryTile _tile;
+
+        int16_t get_x_offset() const
+        {
+            return _tile.get_x_offset();
+        }
+
+        int16_t get_y_offset() const
+        {
+            return _tile.get_y_offset();
+        }
+
+        int16_t get_z_offset() const
+        {
+            return _tile.get_z_offset();
+        }
+
+        uint8_t get_z_clearance() const
+        {
+             return _tile.get_z_clearance();
+        }
+
+        uint16_t get_flags() const
+        {
+            return _tile.get_flags();
+        }
+
+    };
+
     class ScLargeSceneryObject : public ScSceneryObject
     {
     public:
@@ -911,7 +959,42 @@ namespace OpenRCT2::Scripting
         static void Register(duk_context* ctx)
         {
             dukglue_set_base_class<ScSceneryObject, ScLargeSceneryObject>(ctx);
+            dukglue_register_property(ctx, &ScLargeSceneryObject::tiles_get, nullptr, "tiles");
         }
+
+        private:
+
+        std::vector<std::shared_ptr<ScLargeSceneryTile>> tiles_get() const
+        {
+            std::vector<std::shared_ptr<ScLargeSceneryTile>> result;
+            auto sceneryEntry = GetLegacyData();
+            if (sceneryEntry != nullptr)
+            {
+                for (const LargeSceneryTile* tile = sceneryEntry->tiles; tile->y_offset != -1; tile++)
+                {
+                    result.push_back(std::make_shared<ScLargeSceneryTile>(*tile));
+                }
+            }
+            return result;
+        }
+
+
+        protected:
+        LargeSceneryEntry* GetLegacyData() const
+        {
+            auto obj = GetObject();
+            if (obj != nullptr)
+            {
+                return static_cast<LargeSceneryEntry*>(obj->GetLegacyData());
+            }
+            return nullptr;
+        }
+
+        LargeSceneryObject* GetObject() const
+        {
+            return static_cast<LargeSceneryObject*>(ScObject::GetObject());
+        }
+
     };
 
     class ScWallObject : public ScSceneryObject

@@ -28,6 +28,12 @@ struct LargeSceneryTile
     uint8_t z_clearance;
     // CCCC WWWW 0SS0 0000
     uint16_t flags;
+
+    int16_t get_x_offset() const { return x_offset; }
+    int16_t get_y_offset() const { return y_offset; }
+    int16_t get_z_offset() const { return z_offset; }
+    uint8_t get_z_clearance() const { return z_clearance; }
+    uint16_t get_flags() const { return flags; }
 };
 
 enum
@@ -84,6 +90,7 @@ struct LargeSceneryEntry
     {
         return (flags & _flags) != 0;
     }
+
 };
 
 enum LARGE_SCENERY_FLAGS : uint16_t
