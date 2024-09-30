@@ -21,6 +21,7 @@
 #include "../ride/Ride.h"
 #include "../world/Park.h"
 #include "../world/TileElementsView.h"
+#include "../world/tile_element/Slope.h"
 
 using namespace OpenRCT2;
 
@@ -48,6 +49,45 @@ void LargeSceneryRemoveAction::Serialise(DataSerialiser& stream)
     stream << DS_TAG(_loc) << DS_TAG(_tileIndex);
 }
 
+int16_t LargeSceneryRemoveAction::GetMaxSurfaceHeight(LargeSceneryTile* tiles) const
+{
+    int16_t maxHeight = -1;
+    for (LargeSceneryTile* tile = tiles; tile->x_offset != -1; tile++)
+    {
+        auto curTile = CoordsXY{ tile->x_offset, tile->y_offset }.Rotate(_loc.direction);
+
+        curTile.x += _loc.x;
+        curTile.y += _loc.y;
+
+        if (!MapIsLocationValid(curTile))
+        {
+            continue;
+        }
+
+        auto* surfaceElement = MapGetSurfaceElementAt(curTile);
+        if (surfaceElement == nullptr)
+            continue;
+
+        int32_t baseZ = surfaceElement->GetBaseZ();
+        int32_t slope = surfaceElement->GetSlope();
+
+        if ((slope & kTileSlopeRaisedCornersMask) != kTileSlopeFlat)
+        {
+            baseZ += LAND_HEIGHT_STEP;
+            if (slope & kTileSlopeDiagonalFlag)
+            {
+                baseZ += LAND_HEIGHT_STEP;
+            }
+        }
+
+        if (baseZ > maxHeight)
+        {
+            maxHeight = baseZ;
+        }
+    }
+    return maxHeight;
+}
+
 GameActions::Result LargeSceneryRemoveAction::Query() const
 {
     auto res = GameActions::Result();
@@ -70,6 +110,7 @@ GameActions::Result LargeSceneryRemoveAction::Query() const
     }
 
     auto* sceneryEntry = tileElement->AsLargeScenery()->GetEntry();
+
     // If we have a bugged scenery entry, do not touch the tile element.
     if (sceneryEntry == nullptr)
     {
@@ -132,6 +173,16 @@ GameActions::Result LargeSceneryRemoveAction::Query() const
     if (calculate_cost)
         res.Cost = sceneryEntry->removal_price;
 
+
+    int16_t maxHeight = GetMaxSurfaceHeight(sceneryEntry->tiles);
+
+    if (_loc.z != 0)
+    {
+        maxHeight = _loc.z;
+    }
+
+    res.Position.z = maxHeight;
+
     return res;
 }
 
@@ -155,6 +206,7 @@ GameActions::Result LargeSceneryRemoveAction::Execute() const
     }
 
     auto* sceneryEntry = tileElement->AsLargeScenery()->GetEntry();
+    
     // If we have a bugged scenery entry, do not touch the tile element.
     if (sceneryEntry == nullptr)
     {
@@ -201,6 +253,15 @@ GameActions::Result LargeSceneryRemoveAction::Execute() const
     }
 
     res.Cost = sceneryEntry->removal_price;
+
+    int16_t maxHeight = GetMaxSurfaceHeight(sceneryEntry->tiles);
+    
+    if (_loc.z != 0)
+    {
+        maxHeight = _loc.z;
+    }
+
+    res.Position.z = maxHeight;
 
     return res;
 }

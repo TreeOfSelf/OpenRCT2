@@ -11,6 +11,9 @@
 
 #include "GameAction.h"
 
+struct LargeSceneryTile;
+struct LargeSceneryElement;
+
 class LargeSceneryRemoveAction final : public GameActionBase<GameCommand::RemoveLargeScenery>
 {
 private:
@@ -31,4 +34,5 @@ public:
 
 private:
     TileElement* FindLargeSceneryElement(const CoordsXYZ& pos, int32_t sequenceIndex) const;
+    int16_t GetMaxSurfaceHeight(LargeSceneryTile* tiles) const;
 };
